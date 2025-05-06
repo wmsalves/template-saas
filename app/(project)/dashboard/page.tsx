@@ -1,9 +1,16 @@
 import { handleAuth } from "@/app/actions/handle-auth";
 import { auth } from "@/app/lib/auth";
+import { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "Dashboard",
+};
+
 export default async function Dashboard() {
+  // Estamos no lado do servidor!!!
   const session = await auth();
 
   if (!session) {
@@ -16,13 +23,13 @@ export default async function Dashboard() {
       <p>
         {session?.user?.email
           ? session?.user?.email
-          : "O usuário não está logado."}
+          : "Usuário não esta logado!!!"}
       </p>
-      {session?.user?.email && (
+      {session.user?.email && (
         <form action={handleAuth}>
           <button
             type="submit"
-            className="border rounded-md px-2 py-1 cursor pointer"
+            className="border rounded-md px-2 py-1 cursor-pointer"
           >
             Logout
           </button>

@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: 'Template SaaS Rocketseat',
+  description: 'Landing page',
+}
 
 export default function Home() {
   return (
@@ -8,5 +14,5 @@ export default function Home() {
         <button>Login</button>
       </Link>
     </div>
-  );
+  )
 }
